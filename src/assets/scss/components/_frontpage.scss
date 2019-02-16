@@ -1,0 +1,67 @@
+/**
+* front page styles
+*/
+article {
+    @include breakpoint(medium) {
+        width: 720px;
+        margin: 0 auto;
+    }
+}
+
+.featured-image {
+    position: relative;
+    min-height: 500px;
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #FFF;
+}
+.fetaured-image__col {
+    padding-top: 30px;
+}
+/*.featured-image__title {
+    color: #FFF;
+    margin-top: 50px;
+    text-align: center;
+}
+.image-holder {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}*/
+.custom-html-widget {
+    background-color: #fe0002;
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    padding: 20px;
+    box-shadow: 1px 1px 2px 2px #FF0;
+    
+    h2 {
+        color: #FF0;
+    }
+}
+.sec-nav {
+    background-color: #fe0002;
+}
+.sec-nav__navigation {
+    list-style: none;
+    margin: 0;
+    
+    li a {
+        display: inline-block;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        color: #FFF;
+        
+        &:hover {
+            color: #FF0;
+        }
+    }
+}

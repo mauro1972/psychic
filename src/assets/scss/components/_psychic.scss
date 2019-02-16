@@ -1,0 +1,16 @@
+/**
+* Custom style
+*/
+.main-content__inner {
+    
+    @include breakpoint(medium) {
+        margin: 0 auto;
+        max-width: 650px;
+    }
+}
+
+.button {
+    cursor: pointer;
+}
+
+                    
