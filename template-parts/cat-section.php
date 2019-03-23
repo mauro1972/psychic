@@ -22,7 +22,7 @@
             ),                        
         )
     ));
-    echo count($posts);
+    //echo count($posts);
     if ( count($posts) ) {
     ?>
     <div class="cell article-row-section medium-6">
