@@ -56,3 +56,29 @@ require_once( 'library/gutenberg.php' );
 
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/class-foundationpress-protocol-relative-theme-assets.php' );
+
+/** Load Theme Plugin */
+require_once( 'classes/class.psy-theme.php' );
+
+$theme = new Psy_Theme;
+
+function psy_featured_post() {
+    global $theme;
+    return $theme->featured_post();
+}
+
+function psy_promoted_posts() {
+    global $theme;
+    return $theme->promoted_posts();
+}
+
+function psy_videos() {
+    global $theme;
+    return $theme->psy_videos();
+}
+
+function psy_posts_by_category($term_data = NULL) {
+    
+    global $theme;
+    return $theme->psy_posts_by_category( $term_data );
+}

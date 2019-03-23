@@ -34,6 +34,9 @@
 
 		<nav class="site-navigation top-bar" role="navigation">
 			<div class="top-bar-left">
+				<div class="logo" style="float:left; width: 40px; height: 40px; margin-left: 10px">
+				<img src="<?php echo get_template_directory_uri(); ?>/images/logo-1.png" width="" height="" alt="" />
+				</div>
 				<div class="site-desktop-title top-bar-title">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 				</div>

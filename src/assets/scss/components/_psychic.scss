@@ -1,6 +1,9 @@
 /**
 * Custom style
 */
+main.main-content-full {
+    width: 100%;
+}
 .main-content__inner {
     
     @include breakpoint(medium) {
@@ -11,6 +14,13 @@
 
 .button {
     cursor: pointer;
+}
+
+.videos__row {
+    iframe {
+        width: 95%;
+        height: 150px;
+    }
 }
 
                     
