@@ -13,7 +13,7 @@
 <?php
     $posts = get_posts(array(
         'posts_per_page' => 4,
-        'post_type' => array('post'),
+        'post_type' => array('post', 'page'),
         'category' => $term_data->term_id,
         'meta_query' => array(
             'relation' => 'AND',
