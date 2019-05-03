@@ -10,18 +10,15 @@
         <form action="http://light2all.meditationee.com/index.php/lists/so217w2nwo973/subscribe" method="post" accept-charset="utf-8" target="_blank">
 
             <div class="form-group">
-            <label>Email <span class="required">*</span></label>
-            <input type="text" class="form-control" name="EMAIL" placeholder="" value="" required />
+            <input type="text" class="form-control" name="EMAIL" placeholder="Email" value="" required />
             </div>
 
             <div class="form-group">
-            <label>First name</label>
-            <input type="text" class="form-control" name="FNAME" placeholder="" value=""/>
+            <input type="text" class="form-control" name="FNAME" placeholder="First name" value=""/>
             </div>
 
             <div class="form-group">
-            <label>Last name</label>
-            <input type="text" class="form-control" name="LNAME" placeholder="" value=""/>
+            <input type="text" class="form-control" name="LNAME" placeholder="Last name" value=""/>
             </div>
 
             <div class="clearfix"><!-- --></div>
