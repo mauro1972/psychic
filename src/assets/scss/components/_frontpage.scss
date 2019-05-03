@@ -71,6 +71,34 @@
     margin: 0;
 }
 
+section.videos .slider {
+  background-color: transparent;
+}
+.video-slider {
+  height: 285px;
+  
+  .slick-slider iframe {
+    height: 285px;
+    width: 100%;
+  }
+
+  .slick-prev:before, .slick-next:before {
+    color: #E00;
+    display: none;
+
+    @include breakpoint(medium) {
+      display: inline-block;
+    }
+  }
+
+}
+
+.section__description {
+  color: #888;
+  font-size: 1.3rem;
+  padding-bottom: 30px;
+}
+
 .section-cat-container {
     
 }
@@ -83,6 +111,10 @@ h2.article-row-section-header {
     border-top: 1px solid $light-gray;
     padding: 1.5rem 0;
     width: 100%;
+
+    &:first {
+      border-top: none;
+    }
   
      @include breakpoint(medium) {
       flex-direction: row;

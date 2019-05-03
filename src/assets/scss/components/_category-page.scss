@@ -1,0 +1,47 @@
+/**
+* 1.0.1.0
+*/
+.category-page__title {
+
+    text-align: center;
+}
+
+.category-page__description {
+    
+    font-size: 1.1rem;
+    padding: 20px 0 40px;
+
+    @include breakpoint(medium) {
+        margin: 0 auto;
+        max-width: 750px;
+    }
+}
+
+.section-slider {
+    background: transparent;
+    height: auto;
+
+    .slick-prev:before,
+    .slick-arrow:before {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #FA0;
+    }
+
+    .slick-slide > div {
+        margin: 0 5px;
+    }
+    .slide__video iframe {
+        width: 100%;
+        height: 200px;
+    }
+    .slide__image {
+        background-color: #FFF;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 200px;
+    }
+    .slide__content {
+        padding: 10px 10px 5px;
+    }
+}

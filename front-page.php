@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Full Width
+Template Name: Full Width.
 */
 get_header(); ?>
 
@@ -84,24 +84,24 @@ get_header(); ?>
 
 <section class="videos">
     <h2 class="section-title">Energy Enhancement Videos</h2>
-    <div class="videos__row grid-container">
-        <div class="videos__row__inner grid-x grid-margin-x">
-            <?php
+    <div class="slider-section grid-container">
+        <div class="slider responsive video-slider" style="">
+        <?php
 
-                while (psy_videos()->have_posts()) {
-                    psy_videos()->the_post();
-                    $content = apply_filters( 'the_content', $post->post_content );
-                    $embeds = get_media_embedded_in_content( $content );
-                    setup_postdata($post);
-                    ?>   
-                    <div class="cell medium-3" >
-                        <?php echo $embeds[0]; ?>
-                        <?php the_excerpt(); ?>
-                    </div>
-                    <?php
-                }
-                wp_reset_postdata();            
-            ?>
+            while (psy_videos()->have_posts()) {
+                psy_videos()->the_post();
+                $content = apply_filters( 'the_content', $post->post_content );
+                $embeds = get_media_embedded_in_content( $content );
+                setup_postdata($post);
+                ?>   
+                <div>
+                    <?php echo $embeds[0]; ?>
+                    <?php //the_excerpt(); ?>
+                </div>
+                <?php
+            }
+            wp_reset_postdata();            
+        ?>    
         </div>
     </div>
 </section>
@@ -122,21 +122,29 @@ get_header(); ?>
 <div class="section-cat-container grid-container">
 <div class="grid-x grid-margin-x grid-padding-x">
 <?php 
+
     $terms = get_terms(array(
         'taxonomy' => 'category',
-        //'hide_empty' => false,
     ));
+
     $i = 0;
-    foreach($terms as $key => $term) {
+    foreach( $terms as $key => $term ) {
+
         if ($term->name != 'Uncategorized') {
+
             set_query_var('term_name', $term->name);
             set_query_var('term_data', $term);
+
             ?>
 
                 <?php if ($i != 1) { ?>
+
                     <?php get_template_part( 'template-parts/cat-section', '' ); ?>
+
                 <?php } else { ?>
+
                     <?php get_template_part( 'template-parts/newsletter-form', '' ); ?>
+
                 <?php } ?>
 
             <?php

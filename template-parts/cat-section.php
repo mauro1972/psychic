@@ -4,10 +4,15 @@
  */
 ?>
 <?php
+
+    // tag to exclude
+    $term = get_term_by('slug', 'videos','post_tag');
+
     $posts = get_posts(array(
         'posts_per_page' => 4,
         'post_type' => array('post', 'page'),
         'category' => $term_data->term_id,
+        'tag__not_in' => array($term->term_id),
         'meta_query' => array(
             'relation' => 'AND',
             array  (
@@ -29,6 +34,9 @@
     <div class="article-row-section-inner">
 
         <h2 class="article-row-section-header section-title"><a title="Seel all content related to '<?php echo $term_data->name; ?>'" href="<?php echo get_term_link($term_data); ?>"><?php echo $term_name ?></a></h2>
+        <div class="section__description">
+            <?php echo $term_data->description; ?>
+        </div>
     <?php
     
     foreach($posts as $post) {

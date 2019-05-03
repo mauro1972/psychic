@@ -6,6 +6,62 @@ class Psy_Theme {
 
     }
 
+    public function category_sections() {
+        
+        if ( empty( $this->_cache['category_sections']) ) {
+
+            $cat_section = array();
+
+            $categories = get_the_category();
+            $category_id = $categories[0]->cat_ID;
+            $sections = get_field('category_sections', 'category_'. $category_id);
+
+            if ( is_array($sections) && !empty($sections)) {
+                foreach ( $sections as $key => $section_term_id ) {
+                    $section_term = get_term( $section_term_id );
+                    //print_r($section_term);
+                    $section_title = get_field('section_title', 'post_tag_'. $section_term_id );
+                    $query = $this->get_post_by_cat_and_tag($category_id, $section_term_id);
+                    $cat_section[] = array(
+                        'section_title' => $section_title,
+                        'section_description' => $section_term->description,
+                        'tag_posts' => $query,
+                    );
+                }   
+            };
+
+            
+
+            $this->_cache['category_sections'] = $cat_section;
+        }
+
+        return $this->_cache['category_sections'];
+    }
+
+    private function get_post_by_cat_and_tag($cat_id, $tag_id) {
+
+        $query = new WP_Query(array(
+            'posts_per_page' => 10,
+            'post_type' => array('post'),
+            'post_status' => 'publish',
+            'tax_query' => array(
+                'relation' => 'AND',
+                array(
+                   'taxonomy' => 'post_tag',
+                   'field' => 'term_id',
+                   'terms' => array($tag_id), 
+                ),
+                array(
+                    'taxonomy' => 'category',
+                    'field' => 'term_id',
+                    'terms' => array($cat_id), 
+                ),                
+            ),
+        ));
+
+        return $query;
+    }
+
     public function featured_post() {
 
         if ( empty( $this->_cache['featured_post']) ) {
@@ -83,8 +139,23 @@ class Psy_Theme {
                             'key' => 'post_featured',
                             'value' => 0,
                             'compare' => '=', 
-                        ),                        
-                    )                  
+                        ),  
+                                       
+                    ),
+                    /*'tax_query' => array(
+                        'relation' => 'AND',
+                        array(
+                            'taxonomy' => 'category',
+                            'field' => 'term_id',
+                            'terms' => array($term_id), 
+                         ),                        
+                        array(
+                            'taxonomy' => 'post_tag',
+                            'field' => 'slug',
+                            'terms' => array('videos'), 
+                            'operator' => 'NOT IN'
+                         ),                        
+                    ),  */                
                 )
             );
 

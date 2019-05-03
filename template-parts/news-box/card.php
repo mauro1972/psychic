@@ -12,7 +12,7 @@
   <div class="card-section">
     <!--<div class="news-card-date">Sunday, 16th April</div>-->
     <article class="news-card-article">
-      <h4 class="news-card-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+      <h2 class="news-card-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       <?php the_excerpt(); ?>
     </article>
     <!--<div class="news-card-author">

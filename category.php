@@ -12,15 +12,74 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package FoundationPress
- * @since FoundationPress 1.0.0
+ * @since FoundationPress 1.0.0.
  */
 
 get_header(); ?>
 
+<?php
+	$category = get_the_category();
+	//print_r($category);
+?>
+
 <div class="main-container">
 	<div class="main-grid">
 		<main class="main-content-full">
-		<?php if ( have_posts() ) : ?>
+		<h1 class="category-page__title"><?php echo $category[0]->name; ?></h1>
+		<div class="category-page__description">
+			<?php echo $category[0]->category_description; ?>
+		</div>
+
+
+
+		<?php 
+			if ( !empty( psy_category_sections() ) ) {
+				foreach( psy_category_sections() as $sections ) {
+					echo '<h2>'. $sections['section_title'] .'</h2>';
+					echo '<div>'. $sections['section_description'] .'</div>';
+					?>
+					<div class="slider-section grid-container">
+						<div class="slider responsive section-slider" style="">	
+							<?php				
+							$tag_posts = $sections['tag_posts'];
+							while ($tag_posts->have_posts() ) {
+								$tag_posts->the_post();
+								?>
+								<?php
+									$content = apply_filters( 'the_content', $post->post_content );
+									$embeds = get_media_embedded_in_content( $content );
+									$image_url = get_the_post_thumbnail_url($post, 'medium');
+									setup_postdata($post);
+								?>						
+								<div>
+									<?php if(!empty($embeds[0]) ) { ?>
+										<div class="slide__video">
+											<?php echo $embeds[0] ; ?>
+										</div>
+									<?php } else { ?>									
+										<div class="slide__image" style="background-image: url('<?php echo $image_url; ?>')">
+										
+										</div>
+									<?php } ?>
+
+									<div class="slide__content">
+										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+										<?php the_excerpt(); ?>
+									</div>
+								</div>
+
+								<?php
+								wp_reset_postdata();
+							}
+							?>
+						</div>
+					</div>
+					<?php
+				}
+				
+			} else {
+				
+			if ( have_posts() ) : ?>
             <div class="grid-x grid-margin-x">
                 <?php /* Start the Loop */ ?>
                 <?php while ( have_posts() ) : the_post(); ?>
@@ -42,7 +101,9 @@ get_header(); ?>
 					<div class="post-previous"><?php next_posts_link( __( '&larr; Older posts', 'foundationpress' ) ); ?></div>
 					<div class="post-next"><?php previous_posts_link( __( 'Newer posts &rarr;', 'foundationpress' ) ); ?></div>
 				</nav>
-			<?php endif; ?>
+			<?php endif; 
+			}
+		?>
 
 		</main>
 		<?php //get_sidebar(); ?>

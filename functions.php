@@ -62,6 +62,11 @@ require_once( 'classes/class.psy-theme.php' );
 
 $theme = new Psy_Theme;
 
+function psy_category_sections() {
+    global $theme;
+    return $theme->category_sections();
+}
+
 function psy_featured_post() {
     global $theme;
     return $theme->featured_post();
