@@ -23,7 +23,7 @@
 
             <div class="clearfix"><!-- --></div>
             <div class="actions">
-            <button type="submit" class="btn btn-primary btn-flat">Subscribe</button>
+            <button type="submit" class="button btn-primary btn-flat">Subscribe</button>
             </div>
             <div class="clearfix"><!-- --></div>
 
