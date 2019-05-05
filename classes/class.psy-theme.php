@@ -15,14 +15,12 @@ class Psy_Theme {
             $categories = get_the_category();
             $category_id = $categories[0]->cat_ID;
             $sections = get_field('category_sections', 'category_'. $category_id);
-            print_r($sections);
             if ( is_array($sections) && !empty($sections)) {
                 foreach ( $sections as $key => $section_term_id ) {
                     $section_term = get_term( $section_term_id );
                     //print_r($section_term);
                     $section_title = get_field('section_title', 'post_tag_'. $section_term_id );
                     $query = $this->get_post_by_cat_and_tag($category_id, $section_term_id);
-                    echo $section_title .'test<br>';
                     $cat_section[] = array(
                         'section_title' => $section_title,
                         'section_description' => $section_term->description,
