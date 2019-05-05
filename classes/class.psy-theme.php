@@ -22,6 +22,7 @@ class Psy_Theme {
                     //print_r($section_term);
                     $section_title = get_field('section_title', 'post_tag_'. $section_term_id );
                     $query = $this->get_post_by_cat_and_tag($category_id, $section_term_id);
+                    echo $section_title;
                     $cat_section[] = array(
                         'section_title' => $section_title,
                         'section_description' => $section_term->description,
@@ -39,7 +40,7 @@ class Psy_Theme {
     }
 
     private function get_post_by_cat_and_tag($cat_id, $tag_id) {
-
+        
         $query = new WP_Query(array(
             'posts_per_page' => 10,
             'post_type' => array('post'),
