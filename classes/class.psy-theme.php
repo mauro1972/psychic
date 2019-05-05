@@ -15,7 +15,7 @@ class Psy_Theme {
             $categories = get_the_category();
             $category_id = $categories[0]->cat_ID;
             $sections = get_field('category_sections', 'category_'. $category_id);
-
+            print_r($sections);
             if ( is_array($sections) && !empty($sections)) {
                 foreach ( $sections as $key => $section_term_id ) {
                     $section_term = get_term( $section_term_id );
