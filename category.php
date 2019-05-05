@@ -87,7 +87,7 @@ get_header(); ?>
                 <?php endwhile; ?>
             </div>
 			<?php else : ?>
-				<?php get_template_part( 'template-parts/content', 'none' ); ?>
+				<?php //get_template_part( 'template-parts/content', 'none' ); ?>
 
 			<?php endif; // End have_posts() check. ?>
 
