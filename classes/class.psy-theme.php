@@ -22,7 +22,7 @@ class Psy_Theme {
                     //print_r($section_term);
                     $section_title = get_field('section_title', 'post_tag_'. $section_term_id );
                     $query = $this->get_post_by_cat_and_tag($category_id, $section_term_id);
-                    echo $section_title;
+                    echo $section_title .'test<br>';
                     $cat_section[] = array(
                         'section_title' => $section_title,
                         'section_description' => $section_term->description,
